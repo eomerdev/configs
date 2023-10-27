@@ -1,3 +1,6 @@
+# i3 config file
+# Author: eomerdev <eomerdev@gmail.com>
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
