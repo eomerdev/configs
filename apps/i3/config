@@ -192,7 +192,7 @@ exec_always xset led 3
 exec_always feh --bg-fill ~/multimedia/images/wallpapers/wallpaper.jpg
 
 # Keybinding to i3lock
-bindsym $mod+x exec i3lock
+bindsym $mod+x exec i3lock -i ~/multimedia/images/wallpapers/lock.png
 
 # Assign programs to workspaces
 for_window [class="Zathura"] move to workspace $ws5
