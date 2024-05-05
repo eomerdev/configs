@@ -3,8 +3,12 @@
 
 call plug#begin('~/.vim/plugged')
 
+"Start screen
+Plug 'mhinz/vim-startify'
+
 "Theme
 Plug 'morhetz/gruvbox'
+"Plug 'tribela/vim-transparent'
 
 "Tmux interaction
 Plug 'preservim/vimux' 
@@ -12,6 +16,8 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Filetree navigation
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
 
 " Status bar
 Plug 'itchyny/lightline.vim'
@@ -89,3 +95,59 @@ let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
 "
 let g:closetag_close_shortcut = '<leader>>'
+
+" Transparent style
+" default
+"let g:transparent_groups = ['Normal', 'Comment', 'Constant', 'Special', 'Identifier',
+                            "\ 'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String',
+                            "\ 'Function', 'Conditional', 'Repeat', 'Operator', 'Structure',
+                            "\ 'LineNr', 'NonText', 'SignColumn', 'CursorLineNr', 'EndOfBuffer']
+
+"" Pmenu
+"let g:transparent_groups += ['Pmenu']
+
+"" coc.nvim
+""let g:transparent_groups += ['NormalFloat', 'CocFloating']
+
+"augroup transparent
+    "autocmd VimEnter,ColorScheme * call MyTransparent()
+"augroup END
+
+"function! MyTransparent()
+    "" Customize the highlight groups for transparency in here.
+
+    "" CursorLine
+    "hi CursorLine ctermfg=NONE ctermbg=239 guibg=NONE guibg=#4e4e4e
+
+    "" coc.nvim
+    "hi CocMenuSel ctermbg=239 guibg=#4e4e4e
+"endfunction
+
+" NERDTree configuration
+
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+" nerdtree-git-plugin configuration
+
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }

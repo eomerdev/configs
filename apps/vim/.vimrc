@@ -4,7 +4,7 @@
 filetype plugin indent on
 syntax on
 
-set encoding=utf-8
+set encoding=UTF-8
 set fileformats=unix,dos,mac
 
 set undofile
